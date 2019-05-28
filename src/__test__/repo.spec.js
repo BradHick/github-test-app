@@ -84,7 +84,7 @@ describe('The repo process', () => {
 
     expect(repoData.repos).toBeTruthy();
     expect(repoData.repos.length).toBe(0);
-    expect(repoData.errors).toBeTruthy();
+    expect(repoData.errors).toBeFalsy();
     expect(repoData.loading).toBeFalsy();
 
   });
