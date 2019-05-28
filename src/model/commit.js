@@ -54,7 +54,14 @@ const commit = {
 
         return fetch(`${API_URL}${REPOS_URL}/${params.username}/${params.repos}/commits?per_page=20&page=${commitPage}`)
         .then(response => response.json())
-        .then(data => dispatch.commit.fetchCommitsFulfiled(data))
+        .then(data => {
+          if(data.message && data.message !== ''){
+            dispatch.commit.fetchCommitsRejected(data);
+          }
+          else{
+            dispatch.commit.fetchCommitsFulfiled(data);
+          }
+        })
         .catch(error => dispatch.commit.fetchCommitsRejected(error));
       }
     }
