@@ -3,7 +3,7 @@ import Immutable from 'seamless-immutable';
 
 const state = new Immutable({
   commits: [],
-  errors: {},
+  errors: null,
   hasMoreCommits: true,
   commitPage: 1,
   loading: false
@@ -35,7 +35,7 @@ const commit = {
         commits: [],
         hasMoreCommits: true,
         commitPage: 1,
-        errors: {},
+        errors: null,
         loading: false
       });
     },

@@ -2,9 +2,9 @@ import { API_URL, USERS_URL } from '../const';
 import Immutable from 'seamless-immutable';
 
 const state = new Immutable( {
-  user: {},
+  user: null,
   loading: false,
-  errors: {}
+  errors: null
 });
 
 const user = {
@@ -13,7 +13,7 @@ const user = {
     fetchUserFulfiled: ( state, payload ) => {
       return state.merge({
         user: payload.data || payload,
-        errors: {},
+        errors: null,
         loading: false
       });
     },
@@ -26,7 +26,7 @@ const user = {
 
     fetchUserRejected: (state, payload) => {
       return state.merge({
-        user: {},
+        user: null,
         errors: payload.errors || payload,
         loading: false
       });
@@ -34,21 +34,29 @@ const user = {
 
     resetUser: (state) => {
       return state.merge({
-        user: {},
+        user: null,
         loading: false,
-        errors: {}
+        errors: null
       });
     },
   },
 
   effects: (dispatch) => ({
     fetchUser(username){
-      dispatch.user.fetchUserPending();
-
-      return fetch(`${API_URL}${USERS_URL}/${username}`)
-        .then(response => response.json())
-        .then(data => dispatch.user.fetchUserFulfiled(data))
-        .catch(error => dispatch.user.fetchUserRejected(error));
+      if(username){
+        dispatch.user.fetchUserPending();
+        return fetch(`${API_URL}${USERS_URL}/${username}`)
+          .then(response => response.json())
+          .then(data => {
+            if(data.message && data.message !== ''){
+              dispatch.user.fetchUserRejected(data)
+            }
+            else{
+              dispatch.user.fetchUserFulfiled(data)
+            }
+          })
+          .catch(error => dispatch.user.fetchUserRejected(error));
+      }
     },
   })
   

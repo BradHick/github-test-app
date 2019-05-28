@@ -3,7 +3,7 @@ import Immutable from 'seamless-immutable';
 
 const state = new Immutable({
   repos: [],
-  errors: {},
+  errors: null,
   loading: false
 });
 
@@ -30,7 +30,7 @@ const repo = {
     resetRepos: (state) => {
       return state.merge({ 
         repos: [],
-        errors: {},
+        errors: null,
         loading: false 
       });
     }
@@ -38,12 +38,21 @@ const repo = {
 
   effects: (dispatch) => ({
     fetchRepos(username){
-      dispatch.repo.fetchReposPending();
-
-      return fetch(`${API_URL}${USERS_URL}/${username}/repos`)
-        .then(response => response.json())
-        .then(data => dispatch.repo.fetchReposFulfiled(data))
-        .catch(error => dispatch.repo.fetchReposRejected(error));
+      if(username){
+        dispatch.repo.fetchReposPending();
+  
+        return fetch(`${API_URL}${USERS_URL}/${username}/repos`)
+          .then(response => response.json())
+          .then(data => {
+            if(data.message && data.message !== ''){
+              dispatch.repo.fetchReposRejected(data);
+            }
+            else{
+              dispatch.repo.fetchReposFulfiled(data);
+            }
+          })
+          .catch(error => dispatch.repo.fetchReposRejected(error));
+      }
 
     }
   })
