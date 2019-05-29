@@ -1,3 +1,85 @@
+
+
+## Libs used on this project
+
+1 - [Rematch](https://github.com/rematch/rematch?target=_blank)<br>
+2 - [Styled-components](https://github.com/styled-components/styled-components)<br>
+3 - [Seamless-immutable](https://github.com/rtfeldman/seamless-immutable)<br>
+4 - [Moment](https://momentjs.com/)<br>
+5 - [React-Redux](https://github.com/reduxjs/react-redux)<br>
+6 - [Jest](https://jestjs.io/)<br>
+7 - [React](https://reactjs.org/)<br>
+8 - [Formik](https://github.com/jaredpalmer/formik)<br>
+
+
+## After you clone this project's repository, run:
+
+**`yarn install`** <br>
+To install all dependencies;
+<br><br>
+**`yarn test`** <br>
+To run the tests;
+<br><br>
+**`yarn start`** <br>
+To runs the app in the development mode.<br>
+Then, open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br>
+
+
+## The project
+
+This project connects to GitHub rest api and show all the public reposotories of the user that you provide, searching by username.<br>
+
+**FEATURES:**
+* Find user by name;
+* Show the informations of that user (ex: quantity of followers, quantity of followings, etc);
+* Show all public repositories of that user;
+* Sort the repositories by stars, watchers or last updates;
+* Show all commits of selected repository;
+* Filter the commits by provider text;
+* Infinity scroll of commits, loading 20 per time;
+<br>
+
+**TESTS:**
+* Verify erros during the fetch user process;
+* Verify erros during the fetch repos process;
+* Verify erros during the fetch commita process;
+* Verify if the page number was incremented on fetch commits;
+* Verify if user is returned if username exist;
+* Verify errors if user doesn't exist;
+* Verify errors if user was not passed;
+* Verify if repos list is returned;
+* Verify if commits list is returned;
+
+
+
+
+**OBSERVATIONS:**
+* All the functions were implemented outside the class, aiming to keep them in the cache improving the performance instead of always recreating them when the class is instantiated;
+* The `infinityScroll`function was implemented manually to avoid the unnecessary addition of external libs;
+* The `Preloader`component was implemented manually to avoid the unnecessary addition of external libs;
+* The Rematch framework was chosen because it has several characteristics superior to redux, such as generated action creators, async	without middlewares, simple setup and so on. See more on [Comparing Redux & Rematch
+](https://github.com/rematch/rematch/blob/master/docs/purpose.md);
+* The Formik was chosen because it presents an excellent approach to how to work with forms in React, in addition to being much lighter and scalable than its competitor ReduxForm. See more on [Formik Overview](https://jaredpalmer.com/formik/docs/overview);
+
+
+
+
+
+
+
+
+## [Live Demo]()
+
+
+
+
+<br><br><br>
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
