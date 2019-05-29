@@ -1,23 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Footer, Container } from './components';
+import Routes from './Routes';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <>
+        <Container>
+          <Routes />
+        </Container>
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default App;
