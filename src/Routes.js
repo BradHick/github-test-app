@@ -1,13 +1,12 @@
 import React from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
 
 // Components
 import Home from './scenes/home';
 import Repository from './scenes/repository';
 import CommitList from './scenes/commit';
 
-export const history = createHistory();
+export const history = require('history').createBrowserHistory();
 
 const Routes = () => (
   <Router history={history}>
