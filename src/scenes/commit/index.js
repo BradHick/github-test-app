@@ -8,7 +8,7 @@ import { DEFAULT_AVATAR } from '../../const';
 import container from './container';
 
 // Components
-import { 
+import {
   If,
   Card,
   Commit,
@@ -18,12 +18,13 @@ import {
   Form,
   Loading,
   Preloader,
-  BackPage
+  BackPage,
+  Icon
 } from '../../components';
+import Search from '../../assets/icons/search.svg';
 
 class CommitList extends Component {
-
-  state ={
+  state = {
     commits: [],
     paginatedCommits: [],
     per_page: 20,
@@ -32,98 +33,104 @@ class CommitList extends Component {
   };
 
   infinityScroll = () => {
-    const { fetchCommits, loading, match: { params } } = this.props;
-    if(!loading){
+    const {
+      fetchCommits,
+      loading,
+      match: { params }
+    } = this.props;
+    if (!loading) {
       window.onscroll = e => {
-        if ( window.innerHeight + window.scrollY >= document.body.offsetHeight - 25) {
+        if (
+          window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 25
+        ) {
           if (params.username && params.repos) {
             fetchCommits(params);
           }
         }
       };
     }
-  }
+  };
 
   componentDidMount = () => {
-    const { fetchCommits, match: { params } } = this.props;
+    const {
+      fetchCommits,
+      match: { params }
+    } = this.props;
     this.infinityScroll();
     if (params.username && params.repos) {
       fetchCommits(params);
     }
   };
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     const { resetCommits } = this.props;
     resetCommits();
   }
-    
+
   render() {
-    const { commitsList, loading, match: { params } } = this.props;
+    const {
+      commitsList,
+      loading,
+      match: { params }
+    } = this.props;
     return (
       <>
-        <Title> Commits </Title>
-
+        <Title>Commits</Title>
         <Card>
-          <h2><center>Filter commits</center></h2>
-          <Formik 
-            initialValues={{ text:''}}
+          <Formik
+            initialValues={{ text: '' }}
             onSubmit={values => {
-              this.setState({ 
-                commits: filterCommits(commitsList, values.text),
-                })
+              this.setState({
+                commits: filterCommits(commitsList, values.text)
+              });
             }}
-
-            render={({handleSubmit, handleChange}) => (
+            render={({ handleSubmit, handleChange }) => (
               <Form onSubmit={handleSubmit} flex>
-                
+                <Icon src={Search} />
                 <Input
-                  name='text'
-                  placeholder='Text to search (ignore case)'
+                  name="text"
+                  placeholder="Text to search"
                   onChange={handleChange}
                 />
-                
-                <Button type='submit'>
-                  {'Filter'}
-                </Button>
 
+                <Button type="submit">{'Filter'}</Button>
               </Form>
             )}
           />
-            
         </Card>
 
         <BackPage to={`/${params.username}`} />
 
         <If condition={commitsList}>
-          { this.state.commits.length > 0 ?
-            this.state.commits.map(({ commit, author }, i) => {
-              return (
-                <Card key={i}>
-                  <Commit
-                    username={commit.author.name}
-                    message={commit.message}
-                    date={moment(commit.committer.date).format('DD/MM/YYYY')}
-                    img={author ? author.avatar_url : DEFAULT_AVATAR}
-                  />
-                </Card>
-              );
-            }) : 
-            commitsList.map(({ commit, author }, i) => {
-              return (
-                <Card key={i}>
-                  <Commit
-                    username={commit.author.name}
-                    message={commit.message}
-                    date={moment(commit.committer.date).format('DD/MM/YYYY')}
-                    img={author ? author.avatar_url : DEFAULT_AVATAR}
-                  />
-                </Card>
-              );
-            })
-          }
+          {this.state.commits.length > 0
+            ? this.state.commits.map(({ commit, author }, i) => {
+                return (
+                  <Card white key={i}>
+                    <Commit
+                      username={commit.author.name}
+                      message={commit.message}
+                      date={moment(commit.committer.date).format('DD/MM/YYYY')}
+                      img={author ? author.avatar_url : DEFAULT_AVATAR}
+                    />
+                  </Card>
+                );
+              })
+            : commitsList.map(({ commit, author }, i) => {
+                return (
+                  <Card white key={i}>
+                    <Commit
+                      username={commit.author.name}
+                      message={commit.message}
+                      date={moment(commit.committer.date).format('DD/MM/YYYY')}
+                      img={author ? author.avatar_url : DEFAULT_AVATAR}
+                    />
+                  </Card>
+                );
+              })}
         </If>
         <If condition={commitsList.length <= 0}>
-          <Card>
+          <Card white>
             <Commit
               username={'Empty :('}
               message={'This repository has no commits'}
