@@ -31,6 +31,7 @@ Then, open [http://localhost:3000](http://localhost:3000) to view it in the brow
 This project connects to GitHub rest api and show all the public reposotories of the user that you provide, searching by username.<br>
 
 **FEATURES:**
+* Responsive;
 * Find user by name;
 * Show the informations of that user (ex: quantity of followers, quantity of followings, etc);
 * Show all public repositories of that user;
