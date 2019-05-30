@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 const Title = styled.h1`
-  font-size: 36px;
-  color: #333363;
-  font-family: 'Lato';
+  font-size: 52px;
+  color: #d9d9d9;
+  font-family: 'Righteous', cursive;
   font-weight: 400;
-  margin-bottom: 48px;
+  margin: 20px 0;
   letter-spacing: 2px;
   text-align: center;
-  text-transform: uppercase;
   line-height: 45px;
 `;
 
