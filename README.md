@@ -69,7 +69,7 @@ This project connects to GitHub rest api and show all the public reposotories of
 
 
 
-## [Live Demo]()
+## [Live Demo](https://nb10u.codesandbox.io/)
 
 
 
