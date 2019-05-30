@@ -56,17 +56,11 @@ class Home extends Component {
             </Link>
           </Card>
         </If>
-        <If condition={get(errors, 'response')}>
+        <If condition={get(errors, 'response') || get(errors, 'message')}>
           <NotFound />
         </If>
         <Loading>
           <If condition={loading}>
-            {/* <Loader 
-              type='Bars'
-              color='#313541'
-              height='100'	
-              width='100'
-            /> */}
             <Preloader />
           </If>
         </Loading>
