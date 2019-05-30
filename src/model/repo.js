@@ -1,5 +1,5 @@
-import { API_URL, USERS_URL } from '../const';
 import Immutable from 'seamless-immutable';
+import { fetchRepos } from '../api';
 
 const state = new Immutable({
   repos: [],
@@ -41,16 +41,8 @@ const repo = {
       if(username){
         dispatch.repo.fetchReposPending();
   
-        return fetch(`${API_URL}${USERS_URL}/${username}/repos`)
-          .then(response => response.json())
-          .then(data => {
-            if(data.message && data.message !== ''){
-              dispatch.repo.fetchReposRejected(data);
-            }
-            else{
-              dispatch.repo.fetchReposFulfiled(data);
-            }
-          })
+        return fetchRepos(username)
+          .then(data => dispatch.repo.fetchReposFulfiled(data))
           .catch(error => dispatch.repo.fetchReposRejected(error));
       }
 
