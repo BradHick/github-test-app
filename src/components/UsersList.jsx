@@ -1,28 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import Icon from './Icon';
+import ChevronRight from '../assets/icons/chevron-right.svg';
 
 const UserContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
   cursor: pointer;
 `;
 
 const Description = styled.p`
   font-size: 13px;
-  color: #333333;
-  font-family: 'Montserrat';
-  margin-left: 8px;
+  color: #555555;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const Title = styled.h1`
   font-size: 16px;
   line-height: 22px;
   color: #333333;
-  font-family: 'Montserrat';
+  font-family: 'Righteous', cursive;
   font-weight: 400;
-  margin-bottom: 8px;
-  margin-left: 8px;
 `;
 
 const InfoUser = styled.section`
@@ -40,26 +42,21 @@ const PhotoSection = styled.section`
 const Photo = styled.img`
   margin: auto;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   display: block;
+  @media (max-width: 800px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
-const Id = styled.span`
-  font-size: 11px;
+const Id = styled.div`
+  font-size: 12px;
+  margin-bottom: 10px;
   letter-spacing: 1px;
-`;
-
-const Badge = styled.div`
-  width: 70px;
-  height: 20px;
-  border-radius: 13px;
-  background-color: #ffbc34;
-  position: absolute;
-  right: -30px;
-  color: #fff;
-  text-align: center;
-  margin-top: 5px;
+  color: #afafaf;
+  font-family: 'Righteous', cursive;
 `;
 
 const UserList = ({ name, img, bio, location, id }) => {
@@ -69,13 +66,12 @@ const UserList = ({ name, img, bio, location, id }) => {
         <Photo src={`${img}`} />
       </PhotoSection>
       <InfoUser>
-        <Badge>
-          <Id> {id} </Id>
-        </Badge>
-        <Title> {name} </Title>
-        <Description>{bio} </Description>
-        <Description>{location} </Description>
+        <Title>{name}</Title>
+        <Id>{`#${id}`}</Id>
+        <Description>{bio}</Description>
+        <Description>{location}</Description>
       </InfoUser>
+      <Icon src={ChevronRight} />
     </UserContainer>
   );
 };
