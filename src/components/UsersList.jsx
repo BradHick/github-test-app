@@ -71,7 +71,7 @@ const UserList = ({ name, img, bio, location, id }) => {
         <Description>{bio}</Description>
         <Description>{location}</Description>
       </InfoUser>
-      <Icon src={ChevronRight} />
+      <Icon src={ChevronRight} alt='' />
     </UserContainer>
   );
 };

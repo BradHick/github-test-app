@@ -37,7 +37,7 @@ class Home extends Component {
       <>
         <Title>Github</Title>
         <Card>
-          <Icon src={Search} />
+          <Icon src={Search} alt='' />
           <Input
             placeholder="Enter with username"
             onChange={e => this.setState({ text: e.target.value })}

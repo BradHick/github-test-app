@@ -54,7 +54,7 @@ const Repo = ({ name, description, commitStatus, stars, watchers }) => (
         &#9733;{`${stars ? stars : 0}`} &#128065;{`${watchers ? watchers : 0}`}
       </Description>
     </RepositoryCollum>
-    <Icon src={ChevronRight} />
+    <Icon src={ChevronRight} alt='' />
   </RepositoryWrapper>
 );
 
