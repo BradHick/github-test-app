@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SECONDARY_COLOR } from '../const';
+import { PRIMARY_COLOR } from '../const';
 
 const Container = styled.section`
   margin: 0 auto;
@@ -8,7 +8,7 @@ const Container = styled.section`
   justify-content: center;
   flex-direction: column;
   min-height: -webkit-fill-available;
-  background-color: #343434;
+  background-color: ${PRIMARY_COLOR};
   padding: 20px 0 50px 0;
   max-width: 500px;
 `;

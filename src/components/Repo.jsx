@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_COLOR, SECONDARY_COLOR } from '../const';
+import { PRIMARY_COLOR } from '../const';
 
 import Icon from './Icon';
 import ChevronRight from '../assets/icons/chevron-right.svg';

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { SECONDARY_COLOR } from '../const';
 
 const Title = styled.h1`
   font-size: 52px;
-  color: #d9d9d9;
+  color: ${SECONDARY_COLOR};
   font-family: 'Righteous', cursive;
   font-weight: 400;
   margin: 20px 0;

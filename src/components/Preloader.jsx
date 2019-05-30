@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { PRIMARY_COLOR } from '../const';
+import { SECONDARY_COLOR } from '../const';
 
 const bounce = keyframes`
   0%, 75%, 100% {
@@ -26,7 +26,7 @@ const BounceLoader = styled.div`
     height: 20px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.6);
     border-radius: 50%;
-    background: #d9d9d9;
+    background: ${SECONDARY_COLOR};
     &:nth-child(1) {
       animation: ${bounce} 1s ease-in-out infinite;
     }

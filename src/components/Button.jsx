@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { PRIMARY_COLOR } from '../const';
 
 const Button = styled.button`
   border-radius: 15px;
   padding: 20px;
-  background-color: #343434;
+  background-color: ${PRIMARY_COLOR};
   opacity: 1;
   transition: 0.8s opacity;
   border: none;

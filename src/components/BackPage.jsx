@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { SECONDARY_COLOR } from '../const';
 
 const BackPageStyled = styled(Link)`
   width: 60px;
   height: 40px;
   border-radius: 15px;
-  background-color: #d9d9d9;
+  background-color: ${SECONDARY_COLOR};
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   opacity: 1;
   transition: 0.8s opacity;
