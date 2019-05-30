@@ -1,5 +1,5 @@
-import { API_URL, USERS_URL } from '../const';
 import Immutable from 'seamless-immutable';
+import { fetchUser } from '../api';
 
 const state = new Immutable( {
   user: null,
@@ -45,16 +45,8 @@ const user = {
     fetchUser(username){
       if(username){
         dispatch.user.fetchUserPending();
-        return fetch(`${API_URL}${USERS_URL}/${username}`)
-          .then(response => response.json())
-          .then(data => {
-            if(data.message && data.message !== ''){
-              dispatch.user.fetchUserRejected(data)
-            }
-            else{
-              dispatch.user.fetchUserFulfiled(data)
-            }
-          })
+        return fetchUser(username)
+          .then(data => dispatch.user.fetchUserFulfiled(data))
           .catch(error => dispatch.user.fetchUserRejected(error));
       }
     },
