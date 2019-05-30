@@ -1,19 +1,31 @@
+import React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  width: ${p => p.full ? '100%' : '40%'};
-  height: 40px;
-  border-radius: 5px;
-  background-color: #29b6f6;
-  &:hover {background-color: #0097dc};
+  border-radius: 15px;
+  padding: 20px;
+  background-color: #343434;
+  opacity: 1;
+  transition: 0.8s opacity;
   border: none;
-  margin: 0px 0px 0px 10px;
-  display: block;
-  color: #fff;
+  display: flex;
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-weight: 600;
-  font-family: 'Roboto';
+  font-weight: 100;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    opacity: 0.8;
+  };
 `;
 
-export default Button;
+const Label = styled.span`
+  font-family: 'Righteous', cursive;
+  color: #fff;
+`;
+
+export default ({ children, ...props }) => (
+  <Button {...props}>
+    <Label>{children}</Label>
+  </Button>
+);
