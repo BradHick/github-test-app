@@ -17,6 +17,7 @@ import Commit from './Commit';
 import Select from './Select';
 import Form from './Form';
 import Preloader from './Preloader';
+import Icon from './Icon';
 
 export {
   Header,
@@ -37,5 +38,6 @@ export {
   BackPage,
   NotFound,
   Preloader,
-  UsersList
+  UsersList,
+  Icon
 };
