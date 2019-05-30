@@ -1,24 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_COLOR } from '../const';
-
 
 const FooterWrapper = styled.footer`
   height: 40px;
   width: 100%;
-  position: inherit;
-  bottom: 0;
-  left: 0;
-  background-color: ${PRIMARY_COLOR};
   display: flex;
   align-items: center;
-  font-family: 'Roboto',Helvetica,Arial,sans-serif;
 `;
 
 const Text = styled.span`
   margin: 0 auto;
   color: #fff;
   font-size: 13px;
+  font-family: 'Righteous', cursive;
+`;
+
+const Link = styled.a`
+  color: #fff;
+  font-weight: bold;
 `;
 
 const Icon = styled.i`
@@ -28,7 +27,15 @@ const Icon = styled.i`
 const Footer = props => (
   <FooterWrapper>
     <Text>
-       2019 <Icon> &#9786; </Icon> made by <a style={{'color': '#fff'}} href='https://github.com/BradHick' rel='noopener noreferrer' target='_blank'>Brad Hick</a>
+      2019 <Icon> &#9786; </Icon> made by{' '}
+      <Link
+        style={{ color: '#fff' }}
+        href="https://github.com/BradHick"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Brad Hick
+      </Link>
     </Text>
   </FooterWrapper>
 );
