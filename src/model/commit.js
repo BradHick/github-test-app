@@ -1,5 +1,5 @@
-import { API_URL, REPOS_URL } from '../const';
 import Immutable from 'seamless-immutable';
+import { fetchCommits } from '../api';
 
 const state = new Immutable({
   commits: [],
@@ -52,17 +52,9 @@ const commit = {
       if (hasMoreCommits){
         dispatch.commit.fetchCommitsPending();
 
-        return fetch(`${API_URL}${REPOS_URL}/${params.username}/${params.repos}/commits?per_page=20&page=${commitPage}`)
-        .then(response => response.json())
-        .then(data => {
-          if(data.message && data.message !== ''){
-            dispatch.commit.fetchCommitsRejected(data);
-          }
-          else{
-            dispatch.commit.fetchCommitsFulfiled(data);
-          }
-        })
-        .catch(error => dispatch.commit.fetchCommitsRejected(error));
+        return fetchCommits(params, commitPage)
+          .then(data => dispatch.commit.fetchCommitsFulfiled(data))
+          .catch(error => dispatch.commit.fetchCommitsRejected(error));
       }
     }
   })
