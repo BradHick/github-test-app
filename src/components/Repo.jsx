@@ -2,20 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { PRIMARY_COLOR, SECONDARY_COLOR } from '../const';
 
-const Badge = styled.div`
-  min-width: 70px;
-  height: 20px;
-  border-radius: 13px;
-  background-color: ${p => p.color || SECONDARY_COLOR};
-  position: absolute;
-  right: 0;
-  color: #fff;
-  font-size: 13px;
-  text-align: center;
-`;
+import Icon from './Icon';
+import ChevronRight from '../assets/icons/chevron-right.svg';
 
 const BadgeDescription = styled.span`
-  margin: 2px 9px;
+  font-family: 'Roboto', sans-serif;
+  color: #afafaf;
+  font-size: 12px;
+  margin-bottom: 15px;
   display: block;
 `;
 
@@ -29,46 +23,38 @@ const RepositoryWrapper = styled.div`
 
 const RepositoryCollum = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
 `;
 
 const Title = styled.h1`
-  font-size: 16px;
+  font-size: 18px;
   line-height: 22px;
   color: ${PRIMARY_COLOR};
-  font-family: 'Montserrat';
-  font-weight: 400;
+  font-family: 'Righteous', cursive;
   margin-bottom: 8px;
-  margin-left: 8px;
-  text-transform: capitalize;
   letter-spacing: 1px;
-  width: 70%;
 `;
 
 const Description = styled.p`
-  font-size: 13px;
-  color: #333333;
-  font-family: 'Roboto';
-  margin-left: 8px;
+  font-size: 12px;
+  color: #555555;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
   line-height: 16px;
 `;
 
 const Repo = ({ name, description, commitStatus, stars, watchers }) => (
   <RepositoryWrapper>
-    <Badge color={commitStatus.color}>
-      <BadgeDescription>
-        {commitStatus.message}
-      </BadgeDescription> 
-    </Badge>
     <RepositoryCollum>
       <Title> {name} </Title>
+      <BadgeDescription>{commitStatus.message}</BadgeDescription>
+      <Description>{description ? description : 'No description'}</Description>
       <Description>
-        {description ? description : 'No description'}
-      </Description>
-      <Description>
-        &#9733;{ `${ stars ? stars : 0 }`}  &#128065;{`${ watchers ? watchers : 0 }`}
+        &#9733;{`${stars ? stars : 0}`} &#128065;{`${watchers ? watchers : 0}`}
       </Description>
     </RepositoryCollum>
+    <Icon src={ChevronRight} />
   </RepositoryWrapper>
 );
 
