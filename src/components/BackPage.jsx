@@ -1,21 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
 
 const BackPageStyled = styled(Link)`
   width: 60px;
   height: 40px;
-  border-radius: 5px;
-  background-color: #29b6f6;
-  &:hover {background-color: #0097dc};
+  border-radius: 15px;
+  background-color: #d9d9d9;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  transition: 0.8s opacity;
+  &:hover {
+    opacity: 0.8;
+  }
   border: none;
   margin: 10px auto;
-  color: #fff;
-  letter-spacing: 1px;
+  color: #333;
   text-transform: uppercase;
   font-weight: 600;
-  font-family: 'Roboto';
+  font-family: 'Righteous', cursive;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,10 +29,6 @@ const BackPageStyled = styled(Link)`
   left: 19px;
 `;
 
-const BackPage = ({ to }) => (
-  <BackPageStyled to={to} >
-    Back
-  </BackPageStyled>
-);
+const BackPage = ({ to }) => <BackPageStyled to={to}>Back</BackPageStyled>;
 
 export default BackPage;
