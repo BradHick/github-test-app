@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const CommitWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
   cursor: pointer;
+  align-items: center;
   justify-content: space-between;
 `;
 
@@ -14,7 +14,7 @@ const Username = styled.h1`
   font-size: 16px;
   line-height: 22px;
   color: #333333;
-  font-family: 'Montserrat';
+  font-family: 'Righteous', cursive;
   font-weight: 400;
   margin-bottom: 8px;
   margin-left: 8px;
@@ -22,10 +22,11 @@ const Username = styled.h1`
 `;
 
 const Message = styled.p`
-  color: #333333;
+  color: #777777;
   font-family: 'Roboto';
   margin-left: 8px;
   font-size: 13px;
+  line-height: 1.4;
 `;
 
 const Column = styled.div`
@@ -34,10 +35,10 @@ const Column = styled.div`
   width: ${p => p.size || '50%'};
 `;
 
-const Date = styled.span`
-  font-family: 'Montserrat';
+const Date = styled.div`
+  font-family: 'Righteous', cursive;
   font-size: 13px;
-  text-align: right;
+  color: #afafaf;
   display: block;
 `;
 
