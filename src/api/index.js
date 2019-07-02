@@ -3,7 +3,7 @@ import { API_URL, REPOS_URL, USERS_URL } from '../const';
 const treatPromise = promise => {
   return promise.then(response => response.json())
     .then(data => {
-      if(!data.message){
+      if(data.message){
         throw new Error(data);
       }
 
