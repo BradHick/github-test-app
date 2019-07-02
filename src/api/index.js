@@ -1,43 +1,27 @@
 import { API_URL, REPOS_URL, USERS_URL } from '../const';
 
-export const fetchCommits = (params, commitPage) => {
-  return fetch(`${API_URL}${REPOS_URL}/${params.username}/${params.repos}/commits?per_page=20&page=${commitPage}`)
-    .then(response => response.json())
+const treatPromise = promise => {
+  return promise.then(response => response.json())
     .then(data => {
-      if(data.message && data.message !== ''){
+      if(!data.message){
         throw new Error(data);
       }
-      else{
-        return data;
-      }
+
+      return data;
     })
     .catch(error => { throw new Error(error) });
+}
+
+export const fetchCommits = (params, commitPage) => {
+  return treatPromise(
+    fetch(`${API_URL}${REPOS_URL}/${params.username}/${params.repos}/commits?per_page=20&page=${commitPage}`)
+  );
 }
 
 export const fetchRepos = (username) => {
-  return fetch(`${API_URL}${USERS_URL}/${username}/repos`)
-    .then(response => response.json())
-    .then(data => {
-      if(data.message && data.message !== ''){
-        throw new Error(data);
-      }
-      else{
-        return data;
-      }
-    })
-    .catch(error => { throw new Error(error) });
+  return treatPromise(fetch(`${API_URL}${USERS_URL}/${username}/repos`));
 }
 
 export const fetchUser = (username) => {
-  return fetch(`${API_URL}${USERS_URL}/${username}`)
-    .then(response => response.json())
-    .then(data => {
-      if(data.message && data.message !== ''){
-        throw new Error(data);
-      }
-      else{
-        return data;
-      }
-    })
-    .catch(error => { throw new Error(error) });
+  return treatPromise(fetch(`${API_URL}${USERS_URL}/${username}`));
 }
