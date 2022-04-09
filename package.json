@@ -6,7 +6,7 @@
     "@rematch/core": "^1.1.0",
     "formik": "^1.5.7",
     "jest": "^24.8.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
